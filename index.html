@@ -11,6 +11,17 @@
 
 .map-entry{margin:0 0 18px}.map-entry button{width:100%;margin-bottom:7px}.map-dialog{width:calc(100% - 24px);max-width:760px;padding:20px;max-height:calc(100dvh - 24px);overflow:auto}.map-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.map-dialog p{margin:8px 0}.map-wrap{position:relative;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:12px 0;background:var(--stage)}#locationMap{height:min(52dvh,440px);min-height:240px;z-index:0}.map-pin{position:absolute;left:50%;top:50%;width:24px;height:24px;border:4px solid var(--surface);border-radius:50%;background:var(--fg);box-shadow:0 0 0 2px var(--fg),0 2px 8px oklch(0% 0 0 / .4);transform:translate(-50%,-50%);pointer-events:none;z-index:1}.map-coordinates{font:13px/1.7 var(--font-mono);overflow-wrap:anywhere;color:var(--fg)}.map-dialog .leaflet-control-zoom a{width:44px;height:44px;line-height:44px;color:var(--fg);background:var(--surface)}.map-dialog .leaflet-control-zoom a:hover{color:var(--fg);background:var(--soft)}.map-dialog a:focus-visible,#locationMap:focus-visible{outline:3px solid var(--ring);outline-offset:-3px}.map-dialog .leaflet-control-attribution{font-size:11px;color:var(--fg);background:var(--surface)}.map-dialog .leaflet-control-attribution a{color:var(--fg)}
 .precision-field{margin-bottom:15px;font-size:12px}.precision-row{display:grid;grid-template-columns:minmax(0,1fr) 90px;gap:10px;align-items:center}.precision-row input[type=number]{min-height:44px}.color-adjust{border:1px solid var(--border);border-radius:7px;margin:18px 0;padding:12px;min-width:0}.color-adjust legend{font-size:12px;padding:0 6px}.color-row{display:grid;grid-template-columns:52px minmax(0,1fr);gap:10px;margin-bottom:10px}.color-row input[type=color]{width:52px;min-height:44px;padding:3px}.color-row input[type=text]{font-family:var(--font-mono)}.color-adjust .precision-field{margin-bottom:0}input[aria-invalid=true]{outline:2px solid var(--ink)}
+
+/* 桌面双栏分别滚动，调整右侧参数时保持预览位置。 */
+@media(min-width:851px){
+ body{height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden}
+ .top{flex:0 0 auto}
+ .workspace{flex:1 1 auto;min-height:0;overflow:hidden}
+ .left,.side{min-height:0;overflow-y:auto;overscroll-behavior-y:contain;scrollbar-gutter:stable}
+ .side{height:100%}
+ .stage{min-height:180px;padding:16px}
+ .stage canvas,.stage img{max-height:max(160px,calc(100dvh - 430px))}
+}
 </style>
 </head>
 <body>
